@@ -1,4 +1,4 @@
-package org.example;
+package zva.app;
 
 /**
  * Hello world!
