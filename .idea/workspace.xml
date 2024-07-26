@@ -4,14 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75a57804-03a7-4782-aa41-fe9c19aee369" name="Changes" comment="Первый комит в develop">
+    <list default="true" id="75a57804-03a7-4782-aa41-fe9c19aee369" name="Changes" comment="Дополнил структуру проекта пакетами сервер, плеер, агент">
+      <change afterPath="$PROJECT_DIR$/src/main/java/battlespace/gameserver/Movable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/battlespace/gameserver/Move.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/battlespace/gameserver/Vector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/battlespace/gameserver/MoveTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zva/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zva/app/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit3 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -28,34 +40,46 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2jm7i9u82NomRGWfz2kB8mVhSvw" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.AppTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BATTLE_SPACE [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BATTLE_SPACE [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BATTLE_SPACE [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BATTLE_SPACE [test].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BATTLE_SPACE [verify].executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/zakharovva4/.m2/repository/junit/junit/5.8.1&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.AppTest.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.BATTLE_SPACE [clean].executor": "Run",
+    "Maven.BATTLE_SPACE [compile].executor": "Run",
+    "Maven.BATTLE_SPACE [package].executor": "Run",
+    "Maven.BATTLE_SPACE [test].executor": "Run",
+    "Maven.BATTLE_SPACE [verify].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "junit.framework.TestCase",
+    "git-widget-placeholder": "develop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/zakharovva4/.m2/repository/junit/junit/5.8.1",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="battlespace.gameserver" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="zva.app.App" />
@@ -117,12 +141,21 @@
       <option name="project" value="LOCAL" />
       <updated>1721981624758</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Дополнил структуру проекта пакетами сервер, плеер, агент">
+      <option name="closed" value="true" />
+      <created>1721991727025</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721991727025</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fist" />
     <MESSAGE value="Первый комит в develop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Первый комит в develop" />
+    <MESSAGE value="Дополнил структуру проекта пакетами сервер, плеер, агент" />
+    <option name="LAST_COMMIT_MESSAGE" value="Дополнил структуру проекта пакетами сервер, плеер, агент" />
   </component>
 </project>
