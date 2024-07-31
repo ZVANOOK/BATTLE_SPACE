@@ -31,12 +31,13 @@ public class App {
         // Создание игрового объекта
         GameObject gameObject = new GameObject(startPosition, speedM, startDirection);
 
-        // Выполнение перемещения
-        Move move = new Move(gameObject);
-        move.Execute();
         // Выполнение поворота
         Rotate rotate = new Rotate(gameObject);
         rotate.Execute();
+
+        // Выполнение перемещения
+        Move move = new Move(gameObject);
+        move.Execute();
 
         // Получение новой позиции
         Vector newPosition = gameObject.getPosition();
