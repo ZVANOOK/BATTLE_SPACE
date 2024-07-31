@@ -19,6 +19,13 @@ public class Vector {
         return new Vector(v1.x + v2.x, v1.y + v2.y);
     }
 
+    /**
+     * преобразует скорость и угол в дельту вектора x и y.
+     */
+    public static Vector Convert(int speed, int angle) {
+        return new Vector((int) (speed * Math.cos(Math.toRadians(angle))), (int) (speed * Math.sin(Math.toRadians(angle))));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

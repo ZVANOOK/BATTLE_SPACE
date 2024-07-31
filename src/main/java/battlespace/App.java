@@ -16,21 +16,27 @@ public class App {
         int posY = scanner.nextInt();
 
         // Запрос скорости у пользователя
-        System.out.print("Введите скорость по X: ");
-        int velX = scanner.nextInt();
-        System.out.print("Введите скорость по Y: ");
-        int velY = scanner.nextInt();
+        System.out.print("Введите скорость скорость движения от 0 до 100: ");
+        int speedM = scanner.nextInt();
+        System.out.print("Введите направление движения от 0 до 359: ");
+        int directM = scanner.nextInt();
+        System.out.print("Введите скорость поворота от -179 до 179: ");
+        int rotateS = scanner.nextInt();
 
-        // Создание начального вектора позиции и скорости
+        // Создание начального вектора позиции
         Vector startPosition = new Vector(posX, posY);
-        Vector velocity = new Vector(velX, velY);
+        // Создание начального направления движения и скорости поворота объекта - Direction
+        Direction startDirection = new Direction(directM, rotateS);
 
         // Создание игрового объекта
-        GameObject gameObject = new GameObject(startPosition, velocity);
+        GameObject gameObject = new GameObject(startPosition, speedM, startDirection);
 
         // Выполнение перемещения
         Move move = new Move(gameObject);
         move.Execute();
+        // Выполнение поворота
+        Rotate rotate = new Rotate(gameObject);
+        rotate.Execute();
 
         // Получение новой позиции
         Vector newPosition = gameObject.getPosition();
@@ -40,14 +46,16 @@ public class App {
     }
 }
 
-// Класс игрового объекта, реализующий интерфейс Movable
-class GameObject implements Movable {
+class GameObject implements Movable, Rotable {
     private Vector position;
-    private final Vector velocity;
+    private Direction direction;
+    private Vector velocity; // Скорость в дельта X и дельта Y
+    private int speed; // Скорость от 0 до 100
 
-    public GameObject(Vector position, Vector velocity) {
+    public GameObject(Vector position, int speed, Direction direction) {
         this.position = position;
-        this.velocity = velocity;
+        this.direction = direction;
+        this.setSpeed(speed); // Инициолизирует скорость speed и velocity (вектор)
     }
 
     @Override
@@ -63,5 +71,37 @@ class GameObject implements Movable {
     @Override
     public void setPosition(Vector newV) {
         this.position = newV;
+    }
+
+    @Override
+    public int getDirection() {
+        return this.direction.getDirection();
+    }
+
+    @Override
+    public int getAngleChange() {
+        return this.direction.getAngleChange();
+    }
+
+    @Override
+    public void setDirection(Direction newD) {
+        this.direction = newD;
+        // Обновляем velocity, если направление изменилось.
+        this.updateVelocity();
+    }
+
+    // Пока не используется
+    public int getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed % 100;
+        // Обновляем velocity при изменении скорости.
+        this.updateVelocity();
+    }
+
+    private void updateVelocity() {
+        this.velocity = Vector.Convert(this.speed, this.direction.getDirection());
     }
 }
