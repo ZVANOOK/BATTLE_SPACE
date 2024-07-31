@@ -34,6 +34,7 @@ public class App {
         // Выполнение поворота
         Rotate rotate = new Rotate(gameObject);
         rotate.Execute();
+
         // Выполнение перемещения
         Move move = new Move(gameObject);
         move.Execute();
