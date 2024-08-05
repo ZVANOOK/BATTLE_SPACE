@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75a57804-03a7-4782-aa41-fe9c19aee369" name="Changes" comment="Поправил App, теперь сначала просчитывает поворот, потом перемещает в конечную точку">
-      <change afterPath="$PROJECT_DIR$/src/main/java/battlespace/gameserver/BattleSpaceEngine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/battlespace/gameserver/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/battlespace/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlespace/App.java" afterDir="false" />
-    </list>
+    <list default="true" id="75a57804-03a7-4782-aa41-fe9c19aee369" name="Changes" comment="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -264,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722407247446</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь.">
+      <option name="closed" value="true" />
+      <created>1722850001576</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722850001577</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,6 +289,7 @@
     <MESSAGE value="Добавил интерфейс Rotable, принимает изменение направления движения в диапазоне -360-360 градусов, должен возвращать Vector новой скорости" />
     <MESSAGE value="Добавил тесты к поворотам, дополним App.&#10;В целом, сумбура много ))" />
     <MESSAGE value="Поправил App, теперь сначала просчитывает поворот, потом перемещает в конечную точку" />
-    <option name="LAST_COMMIT_MESSAGE" value="Поправил App, теперь сначала просчитывает поворот, потом перемещает в конечную точку" />
+    <MESSAGE value="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь." />
   </component>
 </project>
