@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75a57804-03a7-4782-aa41-fe9c19aee369" name="Changes" comment="Добавил тесты к поворотам, дополним App.&#10;В целом, сумбура много ))">
+    <list default="true" id="75a57804-03a7-4782-aa41-fe9c19aee369" name="Changes" comment="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/battlespace/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlespace/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/battlespace/gameserver/BattleSpaceEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/battlespace/gameserver/BattleSpaceEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit3 Test Class" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -46,10 +47,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App (1).executor": "Run",
     "Application.App.executor": "Run",
     "Application.battlespace.App (1).executor": "Run",
     "Application.battlespace.App (2).executor": "Run",
     "Application.battlespace.App (3).executor": "Run",
+    "Application.battlespace.App (4).executor": "Run",
     "Application.battlespace.App.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "JUnit.AppTest.executor": "Run",
@@ -72,7 +75,8 @@
     "last_opened_file_path": "C:/Users/zakharovva4/.m2/repository/junit/junit/5.8.1",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -86,8 +90,21 @@
       <recent name="battlespace.gameserver" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.battlespace.App (4)">
-    <configuration name="battlespace.App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App (1)">
+    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="battlespace.App" />
+      <module name="BATTLE_SPACE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="battlespace.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="battlespace.App" />
       <module name="BATTLE_SPACE" />
       <extension name="coverage">
@@ -139,26 +156,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="battlespace.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="battlespace.App" />
-      <module name="BATTLE_SPACE" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="battlespace.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App (1)" />
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.battlespace.App (4)" />
         <item itemvalue="Application.battlespace.App (3)" />
         <item itemvalue="Application.battlespace.App (2)" />
-        <item itemvalue="Application.battlespace.App (1)" />
-        <item itemvalue="Application.battlespace.App" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +247,39 @@
       <option name="project" value="LOCAL" />
       <updated>1722406712627</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Добавил тесты к поворотам, дополним App.&#10;В целом, сумбура много ))">
+      <option name="closed" value="true" />
+      <created>1722407177955</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722407177955</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Поправил App, теперь сначала просчитывает поворот, потом перемещает в конечную точку">
+      <option name="closed" value="true" />
+      <created>1722407247446</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1722407247446</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь.">
+      <option name="closed" value="true" />
+      <created>1722850001576</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1722850001577</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь.">
+      <option name="closed" value="true" />
+      <created>1722850069555</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1722850069555</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -265,6 +301,19 @@
     <MESSAGE value="Дополнил Move - кодом и тестами" />
     <MESSAGE value="Добавил интерфейс Rotable, принимает изменение направления движения в диапазоне -360-360 градусов, должен возвращать Vector новой скорости" />
     <MESSAGE value="Добавил тесты к поворотам, дополним App.&#10;В целом, сумбура много ))" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил тесты к поворотам, дополним App.&#10;В целом, сумбура много ))" />
+    <MESSAGE value="Поправил App, теперь сначала просчитывает поворот, потом перемещает в конечную точку" />
+    <MESSAGE value="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил interface Command.&#10;Добавил class BattleSpaceEngine. &#10;В App добавил проверку (вывод в лог продублировал выводом в консоль).&#10;При возникновении исключения в методе execute() команды, происходит вызов метода handleException(Exception e, Command failedCommand).&#10;Если количество попыток (getRetryCount()) для команды меньше 2, команда добавляется в очередь повторного выполнения (RepeatCommand), и счетчик попыток увеличивается на 1.&#10;Если попыток было 2 и более, команда для записи исключения в лог (LogCommand) добавляется в очередь." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/battlespace/App.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
