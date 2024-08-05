@@ -5,6 +5,12 @@ import battlespace.gameserver.*;
 
 public class App {
     public static void main(String[] args) {
+
+        BattleSpaceEngine engine = new BattleSpaceEngine();
+        engine.addCommand(new FailingCommand());
+        engine.processCommands(); // Запуск обработки команд
+
+        /*
         System.out.println("Добро пожаловать в игру \"Космический бой!\"");
 
         Scanner scanner = new Scanner(System.in);
@@ -44,6 +50,29 @@ public class App {
 
         // Вывод новой позиции
         System.out.println("Новая позиция объекта: x = " + newPosition.x + ", y = " + newPosition.y);
+*/
+    }
+}
+
+// Класс, который выполняет команду
+class FailingCommand implements Command {
+    private int retryCount = 0;
+
+    @Override
+    public void execute() throws Exception {
+        if (retryCount < 1) { // Бросаем исключение на первой попытке
+            throw new Exception("Команда не выполнена");
+        }
+    }
+
+    @Override
+    public int getRetryCount() {
+        return retryCount;
+    }
+
+    @Override
+    public void incrementRetryCount() {
+        retryCount++;
     }
 }
 
