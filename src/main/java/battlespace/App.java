@@ -6,13 +6,17 @@ import battlespace.gameserver.*;
 public class App {
     public static void main(String[] args) {
 
-        BattleSpaceEngine engine = new BattleSpaceEngine();
-        engine.addCommand(new FailingCommand());
-        engine.processCommands(); // Запуск обработки команд
-
-        /*
         System.out.println("Добро пожаловать в игру \"Космический бой!\"");
 
+        BattleSpaceEngine engine = new BattleSpaceEngine();
+        // Добавляем команду, которая будет выбрасывать исключение
+        System.out.print("Добавляем команду, которая будет выбрасывать исключение\n");
+        engine.addCommand(new FailingCommand());
+        // Первый вызов - должен вызвать исключение
+        System.out.print("Первый вызов - должен вызвать исключение - ");
+        engine.processCommands();
+
+        /*
         Scanner scanner = new Scanner(System.in);
 
         // Запрос начальной позиции у пользователя

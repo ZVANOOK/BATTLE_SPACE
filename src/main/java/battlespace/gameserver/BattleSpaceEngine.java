@@ -21,6 +21,7 @@ public class BattleSpaceEngine {
     private void handleException(Exception e, Command failedCommand) {
         if (failedCommand.getRetryCount() < 2) {
             failedCommand.incrementRetryCount();
+            commandQueue.offer(new LogCommand(e)); // Записать в лог
             commandQueue.offer(new RepeatCommand(failedCommand)); // Повторить команду
         } else {
             commandQueue.offer(new LogCommand(e)); // Записать в лог
@@ -42,7 +43,6 @@ public class BattleSpaceEngine {
         public void execute() {
             String message = "Произошло исключение: " + exception.getMessage();
             logger.severe(message);
-            System.out.print(message); // Вывод в консоль
         }
 
         @Override
